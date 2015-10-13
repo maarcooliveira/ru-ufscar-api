@@ -1,0 +1,17 @@
+{
+  "name": "ru-ufscar",
+  "version": "1.0.0",
+  "homepage": "https://github.com/maarcooliveira/ru-ufscar-api",
+  "authors": [
+    "marco <oliveira.marco.andre@gmail.com>"
+  ],
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "express": "^4.12.2",
+    "mongoose": "^4.1.10",
+    "cheerio": "^0.19.0",
+    "request": "^2.56.0",
+    "windows-1252": "^0.1.2",
+    "iconv-lite": "^0.4.10"
+  }
+}
