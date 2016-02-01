@@ -81,6 +81,50 @@ todayRoute.get(function(req, res) {
 });
 
 
+var lunchRoute = router.route('/hoje/almoco');
+
+lunchRoute.get(function(req, res) {
+  var d = new Date();
+  d.setHours(0,0,0,0);
+
+  console.log("Buscando dados para almoço de hoje, " + d);
+  Menu.find({ "data": d, "refeicao": "almoco"}).exec(
+    function (err, menu) {
+      if (err) {
+        res.json({ "info": "erro", "cardapio": null});
+      }
+      else if (menu.length === 0) {
+        res.json({ "info": "indisponivel", "cardapio": null});
+      }
+      else {
+        res.json({ "info": "ok", "cardapio": menu});
+      }
+    });
+});
+
+
+var dinnerRoute = router.route('/hoje/jantar');
+
+dinnerRoute.get(function(req, res) {
+  var d = new Date();
+  d.setHours(0,0,0,0);
+
+  console.log("Buscando dados para jantar de hoje, " + d);
+  Menu.find({ "data": d, "refeicao": "jantar"}).exec(
+    function (err, menu) {
+      if (err) {
+        res.json({ "info": "erro", "cardapio": null});
+      }
+      else if (menu.length === 0) {
+        res.json({ "info": "indisponivel", "cardapio": null});
+      }
+      else {
+        res.json({ "info": "ok", "cardapio": menu});
+      }
+    });
+});
+
+
 function getMonday() {
   var d = new Date();
   d.setHours(0,0,0,0);
