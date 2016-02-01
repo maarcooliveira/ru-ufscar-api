@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var MenuSchema   = new mongoose.Schema({
   data: Date,
-  almoco: Boolean,
+  refeicao: String,
   principal: String,
   guarnicao: String,
   salada: String,

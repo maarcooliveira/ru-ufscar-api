@@ -38,7 +38,7 @@ function gotHTML(err, resp, html) {
                refeicao.sobremesa = $(link).find('tbody tr').eq(3).find('td').eq(idx).find('p').eq(10).text();
                refeicao.principalVegetariano = $(link).find('tbody tr').eq(5).find('td').eq(idx).find('p').eq(3).text();
                refeicao.guarnicaoVegetariano = $(link).find('tbody tr').eq(5).find('td').eq(idx).find('p').eq(6).text();
-               refeicao.almoco = i === 5 ? true : false;
+               refeicao.refeicao = i === 5 ? 'almoco' : 'jantar';
 
                refeicao.save(function(err) {
                   if (err) {
