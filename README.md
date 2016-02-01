@@ -3,13 +3,15 @@
 Esta é uma API simples para acessar o [cardápio](http://sorocaba.ufscar.br/ufscar/?cardapio) do restaurante universitário da **UFSCar Sorocaba**.
 
 ### Uso
-A URL principal é [ru-ufscar-api.herokuapp.com/api](http://ru-ufscar-api.herokuapp.com/api/) e os endpoints disponíveis são [/thisweek](http://ru-ufscar-api.herokuapp.com/api/thisweek) e [/today](http://ru-ufscar-api.herokuapp.com/api/today), que oferecem o cardápio da semana e do dia, respectivamente.
+A URL principal é [ru-ufscar-api.herokuapp.com/api](http://ru-ufscar-api.herokuapp.com/api/) e os endpoints disponíveis são [/semana](http://ru-ufscar-api.herokuapp.com/api/semana) e [/hoje](http://ru-ufscar-api.herokuapp.com/api/hoje), que oferecem o cardápio da semana e do dia, respectivamente.
 
-### Resposta
-As respostas são em JSON e contém um array `menu`. O objeto menu será null e haverá uma string `message` informando quando houver um erro na API ou se o cardápio ainda não foi atualizado. Cada objeto do array menu tem dados sobre o cardápio, denominados `principal`, `guarnicao`, `salada`, `sobremesa`, `principalVegetariano`, `guarnicaoVegetariano`, `data` e `almoco` (indica se aquela refeição se refere ao almoço).
+Você também pode pedir dados de uma refeição específica do dia utilizando [/hoje/almoco](http://ru-ufscar-api.herokuapp.com/api/hoje/almoco) e [/hoje/jantar](http://ru-ufscar-api.herokuapp.com/api/hoje/jantar)
 
-### Mas funciona mesmo?
-Considerando que a estrutura da página do cardápio não seja alterada, tudo deve dar certo. Como a UFSCar nem sempre atualiza o cardápio, update.js é executado com o Scheduler do Heroku e checa o site a cada hora para conferir se está tudo atualizado.
+### Respostas
+As respostas são em JSON e contém um array `cardapio`. A string `info` trará as mensagens `erro`, `indisponível` ou `ok`, indicando se a requisição não foi completada por um problema na API, se o cardápio requisitado ainda não foi disponibilizado no site da UFSCar ou se os dados foram enviados no array `cardapio`, respectivamente. Cada objeto do array de cardápios tem os seguintes dados: `principal`, `guarnicao`, `salada`, `sobremesa`, `principalVegetariano`, `guarnicaoVegetariano`, `data` e `refeicao`, que pode receber os valores `almoco` ou `jantar`.
+
+### E funciona mesmo?
+Considerando que a estrutura da página do cardápio não seja alterada, tudo deve dar certo. Como a UFSCar nem sempre atualiza o cardápio, update.js é executado com o Scheduler do Heroku e verifica o site a cada hora para conferir se está tudo atualizado.
 
 ### Seu próprio servidor
 Se quiser fazer o deploy da API em outro servidor, utilize o link para o seu banco de dados como uma variável de ambiente. Por exemplo, para rodar localmente utilize:
